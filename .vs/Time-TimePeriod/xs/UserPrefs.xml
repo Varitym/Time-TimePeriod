@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{2A51E7A5-B461-4522-ABA2-104871457365}|Default">
+  <MonoDevelop.Ide.ItemProperties.Time-TimePeriod FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Time-TimePeriod/Time.cs">
+    <Files>
+      <File FileName="Time-TimePeriod/Program.cs" Line="1" Column="1" />
+      <File FileName="Time-TimePeriod/Time.cs" Line="9" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Time-TimePeriod" expanded="True">
+            <Node name="Time-TimePeriod" expanded="True">
+              <Node name="Time.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
