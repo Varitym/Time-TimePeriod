@@ -6,4 +6,7 @@
     <RootNamespace>Time_TimePeriod</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TimeLib\TimeLib.csproj" />
+  </ItemGroup>
 </Project>

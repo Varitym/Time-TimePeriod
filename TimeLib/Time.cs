@@ -39,6 +39,10 @@ namespace Time_TimePeriod
             this._seconds = checkTime(byte.Parse(timeS[2]), 0, 59);
         }
 
+        public override string ToString()
+        { 
+            return $"{this.Hours.ToString("D2")}:{this.Minutes.ToString("D2")}:{this.Seconds.ToString("D2")}";
+        }
 
         public bool Equals(Time other)
         {
@@ -105,9 +109,9 @@ namespace Time_TimePeriod
         {
             return !(firstTime.Equals(secondTime));
         }
+
+
+
+
     }
-
-
-
-
 }

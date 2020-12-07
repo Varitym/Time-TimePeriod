@@ -14,7 +14,7 @@ namespace Time_TimePeriod
             Console.WriteLine(t1.Hours+" "+t1.Minutes+" "+t1.Seconds);
             Console.WriteLine(t11);
             Console.WriteLine(t2);
-            Console.WriteLine(t22.Hours + ":" + t22.Minutes + ":" + t22.Seconds);
+            Console.WriteLine(t22);
         }
     }
 }

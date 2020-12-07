@@ -1,0 +1,9 @@
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/TimeLib/obj/Debug/netstandard2.1/TimeLib.csprojAssemblyReference.cache
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/TimeLib/obj/Debug/netstandard2.1/TimeLib.AssemblyInfoInputs.cache
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/TimeLib/obj/Debug/netstandard2.1/TimeLib.AssemblyInfo.cs
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/TimeLib/obj/Debug/netstandard2.1/TimeLib.csproj.CoreCompileInputs.cache
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/TimeLib/bin/Debug/netstandard2.1/TimeLib.deps.json
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/TimeLib/bin/Debug/netstandard2.1/TimeLib.dll
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/TimeLib/bin/Debug/netstandard2.1/TimeLib.pdb
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/TimeLib/obj/Debug/netstandard2.1/TimeLib.dll
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/TimeLib/obj/Debug/netstandard2.1/TimeLib.pdb

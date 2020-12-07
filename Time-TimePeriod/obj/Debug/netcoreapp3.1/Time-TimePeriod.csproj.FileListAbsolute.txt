@@ -10,3 +10,6 @@
 /Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/obj/Debug/netcoreapp3.1/Time-TimePeriod.dll
 /Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/obj/Debug/netcoreapp3.1/Time-TimePeriod.pdb
 /Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/obj/Debug/netcoreapp3.1/Time-TimePeriod.genruntimeconfig.cache
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/bin/Debug/netcoreapp3.1/TimeLib.dll
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/bin/Debug/netcoreapp3.1/TimeLib.pdb
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/obj/Debug/netcoreapp3.1/Time-TimePeriod.csproj.CopyComplete
