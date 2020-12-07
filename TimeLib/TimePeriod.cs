@@ -6,6 +6,8 @@ namespace Time_TimePeriod
         private long _seconds;
         public readonly long Seconds => _seconds;
 
+        private static long ParseTimeToSeconds(Time t1) => t1.Hours * 3600 + t1.Minutes * 60 + t1.Seconds;
+
         public static int checkTime(int value, int min, int max)
         {
             if (value >= min && value <= max)
@@ -18,21 +20,41 @@ namespace Time_TimePeriod
             }
         }
 
-        public TimePeriod(int hours, int minutes, int seconds)
+        public TimePeriod(int hours=0, int minutes=0, int seconds=0)
         {
             this._seconds = hours * 3600 + checkTime(minutes, 0, 59) * 60 + checkTime(seconds, 0, 59);
         }
 
-        public TimePeriod(string periodS)
+        public TimePeriod(Time t1, Time t2)
         {
-            string[] periodArr = periodS.Split(":");
-            int hours = int.Parse(periodArr[0]);
-            int minutes = checkTime(byte.Parse(periodArr[1]), 0, 59);
-            int seconds = checkTime(byte.Parse(periodArr[2]), 0, 59);
+            var firstTime = ParseTimeToSeconds(t1);
+            var secondTime = ParseTimeToSeconds(t2);
+            this._seconds = Math.Abs(firstTime - secondTime);
+        }
 
-            if (hours < 0)
+        public TimePeriod(long seconds)
+        {
+            if (seconds < 0) throw new ArgumentException();
+            this._seconds = seconds;
+        }
+
+        public TimePeriod(string timePeriod)
+        {
+            string[] periodArr = timePeriod.Split(":");
+            var minutes = 0;
+            var seconds = 0;
+
+            var hours = int.Parse(periodArr[0]);
+            if (hours < 0) throw new ArgumentException();
+
+            if (periodArr.Length > 1)
             {
-                throw new ArgumentException("Incorrect argument!");
+                minutes = checkTime(byte.Parse(periodArr[1]), 0, 59);
+            }
+
+            if (periodArr.Length > 2)
+            {
+                seconds = checkTime(byte.Parse(periodArr[2]), 0, 59);
             }
 
             this._seconds = hours * 3600 + minutes * 60 + seconds;
@@ -116,52 +138,35 @@ namespace Time_TimePeriod
             return result;
         }
 
-        public static Time operator -(Time time, TimePeriod timeStamp)
+        public TimePeriod Plus(TimePeriod otherTimePeriod)
         {
-            var timeInSeconds = time.Hours * 3600 + time.Minutes * 60 + time.Seconds;
-            var subtractedTimeInSeconds = timeInSeconds - timeStamp.Seconds;
+            return new TimePeriod(this.Seconds + otherTimePeriod.Seconds);
+        }
 
-            if (subtractedTimeInSeconds < 0)
+        public static TimePeriod Plus(TimePeriod tp1, TimePeriod tp2)
+        {
+            return new TimePeriod(tp1.Seconds + tp2.Seconds);
+        }
+
+        public TimePeriod Minus(TimePeriod othertimePeriod)
+        {
+            var newSeconds = this.Seconds - othertimePeriod.Seconds;
+            if (newSeconds < 0) throw new ArgumentException("Arg 1 < Arg 2!");
+            return new TimePeriod(newSeconds);
+        }
+
+        public static TimePeriod Minus(TimePeriod firstTimeStamp, TimePeriod secondTimeStamp)
+        {
+            var subtractionResult = (int)(firstTimeStamp.Seconds - secondTimeStamp.Seconds);
+
+            if (subtractionResult < 0)
                 throw new ArgumentException("Invalid arguments order.");
 
-            var hours = ((subtractedTimeInSeconds - (subtractedTimeInSeconds % 60) - ((subtractedTimeInSeconds - subtractedTimeInSeconds % 60) % 3600 / 60)) / 3600);
-            var minutes = ((subtractedTimeInSeconds - subtractedTimeInSeconds % 60) % 3600 / 60);
-            var seconds = subtractedTimeInSeconds % 60;
-
-            var result = new Time((byte)hours, (byte)minutes, (byte)seconds);
-
-            return result;
+            return new TimePeriod(subtractionResult);
         }
 
-        public static Time Plus(Time firstTime, Time secondTime)
-        {
-            var addedTimeInSeconds = (firstTime.Seconds + secondTime.Seconds) +
-                                     (firstTime.Minutes * 60 + secondTime.Minutes * 60) +
-                                     (firstTime.Hours * 3600 + secondTime.Hours * 3600);
+        
 
-            var hours = ((addedTimeInSeconds - (addedTimeInSeconds % 60) - ((addedTimeInSeconds - addedTimeInSeconds % 60) % 3600 / 60)) / 3600);
-            var minutes = ((addedTimeInSeconds - addedTimeInSeconds % 60) % 3600 / 60);
-            var seconds = addedTimeInSeconds % 60;
-            var result = new Time((byte)hours, (byte)minutes, (byte)seconds);
-
-            return result;
-        }
-
-        public static Time Minus(Time time, TimePeriod timeStamp)
-        {
-            var timeInSeconds = time.Hours * 3600 + time.Minutes * 60 + time.Seconds;
-            var subtractedTimeInSeconds = timeInSeconds - timeStamp.Seconds;
-
-            if (subtractedTimeInSeconds < 0)
-                throw new ArgumentException("Invalid arguments order.");
-
-            var hours = ((subtractedTimeInSeconds - (subtractedTimeInSeconds % 60) - ((subtractedTimeInSeconds - subtractedTimeInSeconds % 60) % 3600 / 60)) / 3600);
-            var minutes = ((subtractedTimeInSeconds - subtractedTimeInSeconds % 60) % 3600 / 60);
-            var seconds = subtractedTimeInSeconds % 60;
-            var result = new Time((byte)hours, (byte)minutes, (byte)seconds);
-
-            return result;
-        }
 
 
 

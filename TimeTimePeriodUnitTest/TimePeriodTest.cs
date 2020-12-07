@@ -1,10 +1,556 @@
 ﻿using System;
-namespace TimeTimePeriodUnitTest
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using Time_TimePeriod;
+
+namespace TimeTimePeriodTestProject
 {
+    [TestClass]
     public class TimePeriodTest
     {
-        public TimePeriodTest()
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Wrong argument format - only numbers and colons allowed.")]
+        public void TestStringWithNotAllowedChars()
         {
+            var argument = ",abc:4";
+
+            var timeStamp = new TimePeriod(argument);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException),
+            "Wrong argument format - there are colons only.")]
+        public void TestStringWithColonOnly()
+        {
+            var argument = ":";
+
+            var timeStamp = new TimePeriod(argument);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException),
+            "Wrong argument format - colon cannot be at first position.")]
+        public void TestStringWithColonAtTheBegining()
+        {
+            var argument = ":4:4";
+
+            var timeStamp = new TimePeriod(argument);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException),
+            "Wrong argument format - too much colons.")]
+        public void TestStringWithTooMuchColons()
+        {
+            var argument = "4:5:0:4";
+
+            var timeStamp = new TimePeriod(argument);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException),
+            "Wrong argument - there is nothing between colons.")]
+        public void TestStringWithColonsTogether()
+        {
+            var argument = "4::4";
+
+            var timeStamp = new TimePeriod(argument);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException),
+            "Wrong argument format - colon cannot be at last position.")]
+        public void TestStringWithColonAtTheEnd()
+        {
+            var argument = "25:4:";
+
+            var timeStamp = new TimePeriod(argument);
+        }
+
+        [TestMethod]
+        public void TestStringWithTwoColons1()
+        {
+            var argument = "05:04:02";
+            var expected = 5 * 3600 + 4 * 60 + 2;
+
+            var timeStamp = new TimePeriod(argument);
+
+            Assert.AreEqual(expected, timeStamp.Seconds);
+        }
+
+        [TestMethod]
+        public void TestStringWithTwoColons2()
+        {
+            var argument = "05:0:2";
+            var expected = 5 * 3600 + 2;
+
+            var timeStamp = new TimePeriod(argument);
+
+            Assert.AreEqual(expected, timeStamp.Seconds);
+        }
+
+        [TestMethod]
+        public void TestStringWithTwoColons3()
+        {
+            var argument = "0:0:0";
+            var expected = 0;
+
+            var timeStamp = new TimePeriod(argument);
+
+            Assert.AreEqual(expected, timeStamp.Seconds);
+        }
+
+        [TestMethod]
+        public void TestStringWithTwoColons4()
+        {
+            var argument = "015:04:00";
+            var expected = 15 * 3600 + 4 * 60;
+
+            var timeStamp = new TimePeriod(argument);
+
+            Assert.AreEqual(expected, timeStamp.Seconds);
+        }
+
+        [TestMethod]
+        public void TestStringWithOneColon1()
+        {
+            var argument = "04:02";
+            var expected = 4 * 60 + 2;
+
+            var timeStamp = new TimePeriod(argument);
+
+            Assert.AreEqual(expected, timeStamp.Seconds);
+        }
+
+        [TestMethod]
+        public void TestStringWithOneColon2()
+        {
+            var argument = "04:2";
+            var expected = 4 * 60 + 2;
+
+            var timeStamp = new TimePeriod(argument);
+
+            Assert.AreEqual(expected, timeStamp.Seconds);
+        }
+
+        [TestMethod]
+        public void TestStringWithOneColon3()
+        {
+            var argument = "4:02";
+            var expected = 4 * 60 + 2;
+
+            var timeStamp = new TimePeriod(argument);
+
+            Assert.AreEqual(expected, timeStamp.Seconds);
+        }
+
+        [TestMethod]
+        public void TestStringWithOneColon4()
+        {
+            var argument = "4:2";
+            var expected = 4 * 60 + 2;
+
+            var timeStamp = new TimePeriod(argument);
+
+            Assert.AreEqual(expected, timeStamp.Seconds);
+        }
+
+        [TestMethod]
+        public void TestStringWithOneColon5()
+        {
+            var argument = "0:0";
+            var expected = 0;
+
+            var timeStamp = new TimePeriod(argument);
+
+            Assert.AreEqual(expected, timeStamp.Seconds);
+        }
+
+        [TestMethod]
+        public void TestStringWithoutColons1()
+        {
+            var argument = "0";
+            var expected = 0;
+
+            var timeStamp = new TimePeriod(argument);
+
+            Assert.AreEqual(expected, timeStamp.Seconds);
+        }
+
+        [TestMethod]
+        public void TestStringWithoutColons2()
+        {
+            var argument = "40";
+            var expected = 40;
+
+            var timeStamp = new TimePeriod(argument);
+
+            Assert.AreEqual(expected, timeStamp.Seconds);
+        }
+
+        [TestMethod]
+        public void TestStringWithoutColons3()
+        {
+            var argument = "120";
+            var expected = "0:2:0";
+
+            var timeStamp = new TimePeriod(argument).ToString();
+
+            Assert.AreEqual(expected, timeStamp);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestStringTimeUnitsRange1()
+        {
+            var argument = "-4:5:20";
+
+            var timeStamp = new TimePeriod(argument);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestStringTimeUnitsRange2()
+        {
+            var argument = "4:-5:20";
+
+            var timeStamp = new TimePeriod(argument);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestStringTimeUnitsRange3()
+        {
+            var argument = "4:5:-20";
+
+            var timeStamp = new TimePeriod(argument);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestStringTimeUnitsRange4()
+        {
+            var argument = "4:70:20";
+
+            var timeStamp = new TimePeriod(argument);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestStringTimeUnitsRange5()
+        {
+            var argument = "4:5:200";
+
+            var timeStamp = new TimePeriod(argument);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestThreeIntArgsTimeUnitsRange1()
+        {
+            var hour = -1;
+            var minute = 20;
+            var Seconds = 5;
+
+            var timeStamp = new TimePeriod(hour, minute, Seconds);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestThreeIntArgsTimeUnitsRange2()
+        {
+            var hour = 1;
+            var minute = -20;
+            var Seconds = 5;
+
+            var timeStamp = new TimePeriod(hour, minute, Seconds);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestThreeIntArgsTimeUnitsRange3()
+        {
+            var hour = 1;
+            var minute = 20;
+            var Seconds = -5;
+
+            var timeStamp = new TimePeriod(hour, minute, Seconds);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestThreeIntArgsTimeUnitsRange4()
+        {
+            var hour = 1;
+            var minute = 99;
+            var Seconds = 5;
+
+            var timeStamp = new TimePeriod(hour, minute, Seconds);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestThreeIntArgsTimeUnitsRange5()
+        {
+            var hour = 1;
+            var minute = 20;
+            var Seconds = 105;
+
+            var timeStamp = new TimePeriod(hour, minute, Seconds);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestTwoIntArgsTimeUnitsRange1()
+        {
+            var hour = -1;
+            var minute = 20;
+
+            var timeStamp = new TimePeriod(hour, minute);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestTwoIntArgsTimeUnitsRange2()
+        {
+            var hour = 1;
+            var minute = -20;
+
+            var timeStamp = new TimePeriod(hour, minute);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestTwoIntArgsTimeUnitsRange3()
+        {
+            var hour = 1;
+            var minute = 90;
+
+            var timeStamp = new TimePeriod(hour, minute);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException),
+            "Incorrect argument.")]
+        public void TestOneIntArgTimeUnitsRange()
+        {
+            var Seconds = -5;
+
+            var timeStamp = new TimePeriod(Seconds);
+        }
+        [TestMethod]
+        public void TestTwoTimeArgs()
+        {
+            var expected = "0:0:0";
+            Time arg = new Time(4, 5, 2);
+
+            var result = new TimePeriod(arg, arg);
+
+            Assert.AreEqual(expected, result.ToString());
+        }
+
+        [TestMethod]
+        public void TestGreaterThanOperator()
+        {
+            var arg1 = "11:50:04";
+            var arg2 = "5:10:0";
+
+            var timeStamp1 = new TimePeriod(arg1);
+            var timeStamp2 = new TimePeriod(arg2);
+
+            var expected = true;
+            var result = timeStamp1 > timeStamp2;
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestLessThanOperator()
+        {
+            var arg1 = "11:50:04";
+            var arg2 = "5:10:0";
+
+            var timeStamp1 = new TimePeriod(arg1);
+            var timeStamp2 = new TimePeriod(arg2);
+
+            var expected = false;
+            var result = timeStamp1 < timeStamp2;
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestGreaterThanOrEqualOperator()
+        {
+            var arg1 = "11:50:04";
+            var arg2 = "1:50:04";
+
+            var timeStamp1 = new TimePeriod(arg1);
+            var timeStamp2 = new TimePeriod(arg2);
+
+            var expected = true;
+            var result = timeStamp1 >= timeStamp2;
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestLessThanOrEqualOperator()
+        {
+            var arg1 = "11:50:04";
+            var arg2 = "11:50:04";
+
+            var timeStamp1 = new TimePeriod(arg1);
+            var timeStamp2 = new TimePeriod(arg2);
+
+            var expected = true;
+            var result = timeStamp1 <= timeStamp2;
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestEqualOperator()
+        {
+            var arg1 = "5:10:0";
+            var arg2 = "5:10:0";
+
+            var timeStamp1 = new TimePeriod(arg1);
+            var timeStamp2 = new TimePeriod(arg2);
+
+            var expected = true;
+            var result = timeStamp1 == timeStamp2;
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestNotEqualThanOperator()
+        {
+            var arg1 = "11:50:04";
+            var arg2 = "5:10:0";
+
+            var timeStamp1 = new TimePeriod(arg1);
+            var timeStamp2 = new TimePeriod(arg2);
+
+            var expected = true;
+            var result = timeStamp1 != timeStamp2;
+
+            Assert.AreEqual(expected, result);
+        }
+        /*
+        [TestMethod]
+        public void TestAdditionOperator()
+        {
+            var arg1 = "0:04:04";
+            var arg2 = "10:10:0";
+
+            var timeStamp1 = new TimePeriod(arg1);
+            var timeStamp2 = new TimePeriod(arg2);
+
+            var expected = "10:14:4";
+            var result = Convert.ToString(timeStamp1 + timeStamp2);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestSubtractionOperator()
+        {
+            var arg1 = "0:04:04";
+            var arg2 = "10:10:0";
+
+            var timeStamp1 = new TimePeriod(arg1);
+            var timeStamp2 = new TimePeriod(arg2);
+
+            var expected = "10:5:56";
+            var result = Convert.ToString(timeStamp2 - timeStamp1);
+
+            Assert.AreEqual(expected, result);
+        }
+        */
+        [TestMethod]
+        public void TestMinusMethod()
+        {
+            var arg1 = "0:04:04";
+            var arg2 = "10:10:0";
+
+            var timeStamp1 = new TimePeriod(arg1);
+            var timeStamp2 = new TimePeriod(arg2);
+
+            var expected = "10:5:56";
+            var result = Convert.ToString(TimePeriod.Minus(timeStamp2, timeStamp1));
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestPlusMethod()
+        {
+            var arg1 = "0:04:04";
+            var arg2 = "10:10:0";
+
+            var timeStamp1 = new TimePeriod(arg1);
+            var timeStamp2 = new TimePeriod(arg2);
+
+            var expected = "10:14:4";
+            var result = Convert.ToString(TimePeriod.Plus(timeStamp1, timeStamp2));
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestCompareToMethod()
+        {
+            var arg1 = "10:10:04";
+            var arg2 = "10:10:04";
+
+            var timeStamp1 = new TimePeriod(arg1);
+            var timeStamp2 = new TimePeriod(arg2);
+
+            var expected = 0;
+            var result = Convert.ToInt32(timeStamp1.CompareTo(timeStamp2));
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestEqualsMethod()
+        {
+            var arg1 = "10:10:04";
+            var arg2 = "10:10:04";
+
+            var timeStamp1 = new TimePeriod(arg1);
+            var timeStamp2 = new TimePeriod(arg2);
+
+            var expected = true;
+            var result = timeStamp1.Equals(timeStamp2);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestToStringMethod()
+        {
+            var timeStamp = new TimePeriod(160);
+
+            var expected = "0:2:40";
+
+            Assert.AreEqual(expected, timeStamp.ToString());
         }
     }
 }

@@ -140,6 +140,16 @@ namespace Time_TimePeriod
             return result;
         }
 
+        public Time Plus(TimePeriod tp1)
+        {
+            var seconds = this.Hours * 3600 + this.Minutes * 60 + this.Seconds + tp1.Seconds;
+            var newHour = (byte)(seconds / 3600 > 23 ? (seconds / 3600) % 24 : seconds / 3600);
+            var newMinute = (byte)((seconds / 60) % 60);
+            var newSecond = (byte)(seconds % 60);
+
+            return new Time(newHour, newMinute, newSecond);
+        }
+
         public static Time Plus(Time firstTime, Time secondTime)
         {
             var addedTimeInSeconds = (firstTime.Seconds + secondTime.Seconds) +
@@ -152,6 +162,19 @@ namespace Time_TimePeriod
             var result = new Time((byte)hours, (byte)minutes, (byte)seconds);
 
             return result;
+        }
+
+        
+
+
+        public Time Plus(Time timeStamp1, TimePeriod tp1)
+        {
+            var seconds = this.Hours * 3600 + this.Minutes * 60 + this.Seconds + tp1.Seconds;
+            var newHour = (byte)(seconds / 3600 > 23 ? (seconds / 3600) % 24 : seconds / 3600);
+            var newMinute = (byte)((seconds / 60) % 60);
+            var newSecond = (byte)(seconds % 60);
+
+            return new Time(newHour, newMinute, newSecond);
         }
 
         public static Time Minus(Time time, TimePeriod timeStamp)
@@ -169,6 +192,23 @@ namespace Time_TimePeriod
 
             return result;
         }
+
+        public Time Minus(TimePeriod timeStamp)
+        {
+            var subtractedTimeInSeconds = (Seconds + Minutes * 60 + Hours * 3600) - timeStamp.Seconds;
+
+            if (subtractedTimeInSeconds < 0)
+                throw new ArgumentException("Invalid arguments order.");
+
+            var hours = ((subtractedTimeInSeconds - (subtractedTimeInSeconds % 60) - ((subtractedTimeInSeconds - subtractedTimeInSeconds % 60) % 3600 / 60)) / 3600);
+            var minutes = ((subtractedTimeInSeconds - subtractedTimeInSeconds % 60) % 3600 / 60);
+            var seconds = subtractedTimeInSeconds % 60;
+            var result = new Time((byte)hours, (byte)minutes, (byte)seconds);
+
+            return result;
+        }
+
+
 
 
 
