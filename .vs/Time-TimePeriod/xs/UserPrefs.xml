@@ -1,17 +1,23 @@
 ﻿<Properties StartupConfiguration="{2A51E7A5-B461-4522-ABA2-104871457365}|Default">
+  <MonoDevelop.Ide.ItemProperties.TimeTimePeriodUnitTest FirstBuild="True" />
   <MonoDevelop.Ide.ItemProperties.Time-TimePeriod PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TimeLib/TimePeriod.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TimeTimePeriodUnitTest/TimePeriodTest.cs">
     <Files>
-      <File FileName="Time-TimePeriod/Program.cs" Line="17" Column="45" />
-      <File FileName="Time-TimePeriod/Time.cs" Line="100" Column="10" />
-      <File FileName="Time-TimePeriod/TimePeriod.cs" Line="98" Column="39" />
+      <File FileName="Time-TimePeriod/Program.cs" Line="14" Column="33" />
+      <File FileName="Time-TimePeriod/Time.cs" Line="19" Column="17" />
+      <File FileName="Time-TimePeriod/TimePeriod.cs" Line="53" Column="10" />
+      <File FileName="TimeTimePeriodUnitTest/UnitTest1.cs" Line="2" Column="52" />
+      <File FileName="TimeTimePeriodUnitTest/TimePeriodTest.cs" Line="556" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Time-TimePeriod" expanded="True">
             <Node name="TimeLib" expanded="True" />
-            <Node name="Time-TimePeriod" expanded="True" selected="True" />
+            <Node name="Time-TimePeriod" expanded="True" />
+            <Node name="TimeTimePeriodUnitTest" expanded="True">
+              <Node name="TimePeriodTest.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>

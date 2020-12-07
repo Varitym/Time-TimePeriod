@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Time-TimePeriod", "Time-Tim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeLib", "TimeLib\TimeLib.csproj", "{63179E86-7C9B-4FAC-8F9A-0BBC52CEDD0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTimePeriodUnitTest", "TimeTimePeriodUnitTest\TimeTimePeriodUnitTest.csproj", "{DFACEEF7-8FF7-40B1-BE5C-F6EC14290455}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{63179E86-7C9B-4FAC-8F9A-0BBC52CEDD0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63179E86-7C9B-4FAC-8F9A-0BBC52CEDD0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63179E86-7C9B-4FAC-8F9A-0BBC52CEDD0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFACEEF7-8FF7-40B1-BE5C-F6EC14290455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFACEEF7-8FF7-40B1-BE5C-F6EC14290455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFACEEF7-8FF7-40B1-BE5C-F6EC14290455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFACEEF7-8FF7-40B1-BE5C-F6EC14290455}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
