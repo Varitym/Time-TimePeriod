@@ -3,7 +3,7 @@
 namespace Time_TimePeriod
 
 {
-    public struct Time : IEquatable<Time>
+    public struct Time : IEquatable<Time>, IComparable<Time>
     {
         private byte _hours, _minutes, _seconds;
         public readonly byte Hours => _hours;
@@ -18,12 +18,12 @@ namespace Time_TimePeriod
             }
             else
             {
-                throw new ArgumentException("Wrong argument!");
+                throw new ArgumentException("Incorrect argument!");
             }
         }
 
 
-        public Time(byte hours, byte minutes, byte seconds)
+        public Time(byte hours=0, byte minutes=0, byte seconds=0)
         {
             this._hours = checkTime(hours, 0, 23);
             this._minutes = checkTime(minutes, 0, 59);
@@ -56,9 +56,9 @@ namespace Time_TimePeriod
                 return false;
         }
 
-        public static bool Equals(Time time1, Time time2)
+        public static bool Equals(Time firstTime, Time secondTime)
         {
-            return time1.Equals(time2);
+            return firstTime.Equals(secondTime);
         }
 
         public override int GetHashCode() => (Hours, Minutes, Seconds).GetHashCode();
@@ -76,6 +76,35 @@ namespace Time_TimePeriod
             return this.Seconds.CompareTo(other.Seconds);
         }
 
+        public static bool operator <(Time firstTime, Time secondTime)
+        {
+            return firstTime.CompareTo(secondTime) < 0;
+        }
+
+        public static bool operator <=(Time firstTime, Time secondTime)
+        {
+            return firstTime.CompareTo(secondTime) <= 0;
+        }
+
+        public static bool operator >(Time firstTime, Time secondTime)
+        {
+            return firstTime.CompareTo(secondTime) > 0;
+        }
+
+        public static bool operator >=(Time firstTime, Time secondTime)
+        {
+            return firstTime.CompareTo(secondTime) >= 0;
+        }
+
+        public static bool operator ==(Time firstTime, Time secondTime)
+        {
+            return firstTime.Equals(secondTime);
+        }
+
+        public static bool operator !=(Time firstTime, Time secondTime)
+        {
+            return !(firstTime.Equals(secondTime));
+        }
     }
 
 

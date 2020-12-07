@@ -1,0 +1,12 @@
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/bin/Debug/netcoreapp3.1/Time-TimePeriod.deps.json
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/bin/Debug/netcoreapp3.1/Time-TimePeriod.runtimeconfig.json
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/bin/Debug/netcoreapp3.1/Time-TimePeriod.runtimeconfig.dev.json
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/bin/Debug/netcoreapp3.1/Time-TimePeriod.dll
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/bin/Debug/netcoreapp3.1/Time-TimePeriod.pdb
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/obj/Debug/netcoreapp3.1/Time-TimePeriod.csprojAssemblyReference.cache
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/obj/Debug/netcoreapp3.1/Time-TimePeriod.AssemblyInfoInputs.cache
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/obj/Debug/netcoreapp3.1/Time-TimePeriod.AssemblyInfo.cs
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/obj/Debug/netcoreapp3.1/Time-TimePeriod.csproj.CoreCompileInputs.cache
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/obj/Debug/netcoreapp3.1/Time-TimePeriod.dll
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/obj/Debug/netcoreapp3.1/Time-TimePeriod.pdb
+/Users/mateusz/Programming/WSEI/Time-TimePeriod/Time-TimePeriod/obj/Debug/netcoreapp3.1/Time-TimePeriod.genruntimeconfig.cache
